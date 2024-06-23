@@ -1,0 +1,84 @@
+.connectWallet {
+    height: 100vh;
+    width: 100%;
+  }
+
+  .typingContainer {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .typing {
+    font-family: "Inconsolata", Consolas, monospace;
+    font-weight: 800;
+    font-size: 4em;
+    color: white;
+    width: 550px;
+    overflow: hidden;
+    border-right: 0.1em solid white;
+    white-space: nowrap;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    animation: typing 3.5s steps(35, end), blink-caret 0.75s step-end infinite;
+  }
+
+  .walletButtonContainer {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .walletButton {
+    padding: 20px 40px;
+    background: none;
+    border: none;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 3px;
+    cursor: pointer;
+    height: 60px;
+    background-color: white;
+  }
+  
+  .walletButton:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border: 2px solid #282828;
+    transition: transform 0.2s;
+  }
+  
+  .walletButton:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border: 2px solid #282828;
+    transition: transform 0.2s;
+  }
+  
+  .walletButton:after {
+    transform: translate(3px, 3px);
+  }
+  
+  .walletButton:before {
+    transform: translate(-3px, -3px);
+  }
+  
+  .walletButton:hover:after {
+    transform: translate(0);
+  }
+  
+  .walletButton:hover:before {
+    transform: translate(0);
+  }
