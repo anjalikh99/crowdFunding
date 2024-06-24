@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 // import { v4 as uuidv4 } from "uuid";
 import FundCard from './FundCard';
 import { loader } from '../assets';
+import '../css/DisplayCampaigns.css';
+import Sidebar from './Sidebar';
+import Navbar from './Navbar';
 
 const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   // const navigate = useNavigate();
@@ -13,7 +16,9 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   
   return (
     <div>
-      <h1>Display Campaigns</h1>
+      <Sidebar></Sidebar>
+      <Navbar></Navbar>
+      <h1 className='campaigns'>Display Campaigns</h1>
       {/* <h1 className="font-epilogue font-semibold text-[18px] text-white text-left">{title} ({campaigns.length})</h1>
 
       <div className="flex flex-wrap mt-[20px] gap-[26px]">

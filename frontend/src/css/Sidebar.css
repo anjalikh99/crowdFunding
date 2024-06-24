@@ -1,0 +1,31 @@
+.sidebar {
+    background-color: #343a40; /* Bootstrap dark background color */
+    height: 80vh;
+    position: fixed;
+    top: 10%;
+    left: 1%;
+    width: 60px; /* Adjust the width of the sidebar as needed */
+    padding-top: 20px;
+    border-radius: 15px;
+}
+
+.sidebar ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-align: center;
+    display: block;
+    color: #adb5bd; /* Bootstrap light color */
+    font-size: 24px;
+}
+
+.sidebar ul li a:hover {
+    color: rgb(10, 125, 10); /* Change color on hover */
+    text-decoration: none;
+}
