@@ -3,7 +3,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #fff;
+    background: #343a40;
+    color: white;
     border-radius: 16px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     overflow: hidden;
@@ -27,20 +28,19 @@
 
 .dcard-title {
     font-size: 32px;
-    color: #333;
     margin-bottom: 20px;
 }
 
 .dcard-description {
     font-size: 18px;
-    color: #666;
+    color: #9a9696;
     margin-bottom: 20px;
     line-height: 1.6;
 }
 
 .dcard-meta, .dcard-fund-raised, .dcard-fund-required {
     font-size: 14px;
-    color: #777;
+    color: #9a9696;
     margin-bottom: 20px;
 }
 
@@ -55,6 +55,14 @@
 
 .dcard-fund-required {
     color: #dc3545;
+}
+
+.amount {
+    width: 70%;
+    height: 50px;
+    padding: 15px;
+    margin: 3% 3%;
+    border-radius: 10px;
 }
 
 .dcard-button {

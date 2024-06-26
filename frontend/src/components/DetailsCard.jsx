@@ -1,41 +1,61 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ProgressBar from './ProgressBar';
 import DonatorsTable from './DonatorsTable';
 import '../css/DetailsCard.css';
+import {getCampaignDonators, donate} from '../contractMethods';
 
-const DetailsCard = () => {
-  const fundRaised = 10000;
-  const fundRequired = 20000;
-  const progress = (fundRaised / fundRequired) * 100;
+const DetailsCard = ({details, index}) => {
+  const [donationAmount, setDonationAmount] = useState('');
+  const [donators, setDonators] = useState([]);
 
-  const donators = [
-    { address: '0x1234...abcd', amount: 500 },
-    { address: '0x5678...efgh', amount: 300 },
-    { address: '0x9abc...ijkl', amount: 200 },
-  ];
+  let donations = [];
+  useEffect(() => {
+     async function getDonators() {
+         let returnedData = await getCampaignDonators(index);
+         setDonators(returnedData);
+         console.log(returnedData);
+         donations = returnedData[1];
+     }
+      getDonators();
+  }, []);
+
+  async function donateToCampaign() {
+     let amount = donationAmount;
+     let success = await donate(index, amount);
+     if(success) {
+       alert("Donated Successfully");
+     }
+  }
+
+  function handleChange(e) {
+     setDonationAmount(e.target.value);
+  }
+  
+  const progress = ((parseInt(details.amountCollected)/ 10** 18) / parseInt(details.target)) * 100;
 
   return (
     <div className="carddetaile">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkGHsQ2Vz1J8Cs3uBW2vlPS6yz68U8dP7Zkw&s" alt="Card Image" className="dcard-image" />
+      <img src={details.image} alt="Card Image" className="dcard-image" />
       <div className="dcard-content">
-        <h2 className="dcard-title">Card Title</h2>
+        <h2 className="dcard-title">{details.title}</h2>
         <p className="dcard-description">
-          This is a detailed description of the card. It provides more information about the card, including its features, benefits, and any other relevant details.
+          {details.description}
         </p>
         <p className="dcard-meta">
-          <i className="fas fa-info-circle"></i> Additional Meta Information
+          <i className="fas fa-info-circle"></i> {details.category}
         </p>
         <p className="dcard-fund-raised">
-          <i className="fas fa-hand-holding-usd"></i> Fund Raised: ${fundRaised.toLocaleString()}
+          <i className="fas fa-hand-holding-usd"></i> Fund Raised: {parseInt(details.amountCollected) / 10 ** 18} ETH
         </p>
         <p className="dcard-fund-required">
-          <i className="fas fa-bullseye"></i> Fund Required: ${fundRequired.toLocaleString()}
+          <i className="fas fa-bullseye"></i> Fund Required: {parseInt(details.target)} ETH
         </p>
         <ProgressBar progress={progress} />
-        <button className="dcard-button">
+        <input className="amount" type='number' id='donateAmount' placeholder='Please enter donation amount in ETH' value={donationAmount} onChange={handleChange} required/>
+        <button className="dcard-button" onClick={donateToCampaign}>
           <i className="fas fa-donate"></i> Donate Now
         </button>
-        <DonatorsTable donators={donators} />
+        <DonatorsTable donators={donators} donations={donations} />
       </div>
     </div>
   );

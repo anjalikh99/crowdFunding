@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect , useState} from 'react';
+import { ethers } from 'ethers';
 import '../css/DisplayCampaigns.css';
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
@@ -7,14 +8,18 @@ import CrowdfundingCard from './CrowdfundingCard';
 import { getAllCampaigns } from '../contractMethods';
 import CampaignDetails from './CampaignDetails';
 
-const DisplayCampaigns = () => {
+const MyCampaigns = () => {
   const [campaignDetails, setCampaignDetails] = useState([]);
   const [openDetails, setOpenDetails] = useState(false);
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     async function fetchCampaigns() {
-    const campaign = await getAllCampaigns();
+    let campaign = await getAllCampaigns();
+    let provider = new ethers.BrowserProvider(window.ethereum);
+    let signer = await provider.getSigner();
+    const address = signer.address;
+    campaign = campaign.filter(camp => camp.owner === address);
     setCampaignDetails(campaign);
     }
     fetchCampaigns();
@@ -28,12 +33,12 @@ const DisplayCampaigns = () => {
   return (
     <div className='campaigns'>
      {!openDetails && <Sidebar></Sidebar>}
-     {!openDetails && <Navbar header="All Campaigns"></Navbar>}
+     {!openDetails && <Navbar header="My Campaigns"></Navbar>}
      {!openDetails && <div className='details'>
       {campaignDetails.length > 0 && campaignDetails.map((campaign, index) => 
       <CrowdfundingCard 
       key={index}
-      id = {index}
+      id={index}
       address={campaign.owner} 
       title={campaign.title} 
       description={campaign.description}
@@ -51,4 +56,4 @@ const DisplayCampaigns = () => {
   );
 }
 
-export default DisplayCampaigns;
+export default MyCampaigns;

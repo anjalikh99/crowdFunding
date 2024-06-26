@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import '../css/ProjectForm.css';
 import {createNewCampaign} from '../contractMethods';
 
-const ProjectForm = ({ onSubmit }) => {
+const ProjectForm = () => {
   const navigate = useNavigate();
 
   const [title, setTitle] = useState('');

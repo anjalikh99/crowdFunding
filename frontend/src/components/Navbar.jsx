@@ -1,18 +1,17 @@
-import React, { useState } from 'react'
 import { CustomButton } from './';
 import '../css/Navbar.css';
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = (props) => {
   const navigate = useNavigate();
 
   function openCampaignForm() {
-    navigate('/campaign-form');
+    navigate('/create-campaign');
   }
   return (
     <div>
       <div className='navbar'>
-        <h1 className='header'>All Campaigns</h1>
+        <h1 className='header'>{props.header}</h1>
         <CustomButton 
           btnType="button"
           title="Create a Campaign"

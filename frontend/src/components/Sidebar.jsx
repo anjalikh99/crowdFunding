@@ -6,7 +6,7 @@ import { navlinks } from '../constants/index';
 const Sidebar = () => {
     return (
         <div className="sidebar">
-          {navlinks.map(navlink => <Icon link = {navlink.link} imgUrl = {navlink.imgUrl}></Icon>)}
+          {navlinks.map((navlink) => <Icon key={navlink.id} link = {navlink.link} imgUrl = {navlink.imgUrl}></Icon>)}
         </div>
     );
 }

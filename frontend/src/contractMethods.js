@@ -109,9 +109,24 @@ async function changeNetwork() {
 
   export async function donate(campaignId, amount) {
     const contract = await initiateContract();
+    console.log(amount.toString());
     let provider = new ethers.BrowserProvider(window.ethereum);
     let signer = await provider.getSigner();
     const address = signer.address;
 
-    const tx = await contract.donateToCampaign(campaignId, {gas : 300000, from : address, value : ethers.utils.parseEther(amount)});
+    try {
+       const tx = await contract.donateToCampaign(campaignId, {gas : 300000, from : address, value : ethers.parseEther(amount.toString())});
+       await tx.wait();
+       return true;
+    } catch(err) {
+        alert("Something went wrong while donation");
+        console.log(err);
+    }
+    return false;
+  }
+
+  export async function getCampaignDonators(id) {
+    const contract = await initiateContract();
+    let donators = await contract.getDonators(id);
+    return donators;
   }

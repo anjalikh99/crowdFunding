@@ -15,8 +15,8 @@ const DonatorsTable = ({ donators }) => {
         <tbody>
           {donators.map((donator, index) => (
             <tr key={index}>
-              <td>{donator.address}</td>
-              <td>${donator.amount}</td>
+              <td>{donator}</td>
+              <td>{parseInt(donators[1])/10**18} ETH</td>
             </tr>
           ))}
         </tbody>

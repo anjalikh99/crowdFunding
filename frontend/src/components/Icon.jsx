@@ -1,12 +1,12 @@
 import React from 'react';
 import '../css/Icon.css';
 
-const Icon = ({ link, imgUrl }) => {
+const Icon = (props) => {
   return (
-    <ul className="list-unstyled">
+    <ul className="list-unstyled" id={props.id}>
         <li>
-            <a href={link}>
-                {imgUrl}
+            <a href={props.link}>
+                {props.imgUrl}
             </a>
         </li>
     </ul>
