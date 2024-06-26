@@ -1,0 +1,115 @@
+/* src/CrowdfundingCard.css */
+.card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  margin-top: 0px;
+  width: 350px;
+  height: 400px;
+  color: white;
+  margin-left: 8%;
+  background-color:#343a40;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card-image {
+  width: 100%;
+  height: fit-content;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.card-content {
+  padding: 12px;
+}
+
+.card-title {
+  font-size: 1.7em;
+  margin: 5px;
+  font-weight: bold;
+}
+
+.card-category {
+  font-size: 1em;
+  margin: 15px 10px;
+  color: #adb5bd;
+  font-weight: 500;
+}
+
+.card-description {
+  font-size: 1em;
+  margin: 5px;
+  color: #adb5bd;
+  font-weight: 500;
+}
+
+.card-progress {
+  background: #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.progress-bar {
+  height: 10px;
+  background: #76c7c0;
+}
+
+.card-goal,
+.card-days-left {
+  font-size: 0.9em;
+  color: #adb5bd;
+  font-weight: 500;
+  margin: 0px 5px;
+}
+
+.card-days-left {
+  margin-left: 20%;
+}
+
+.card-button {
+  background: #76c7c0;
+  margin-top: -11%;
+  margin-left: 70%;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 5px;
+  font-size: 1em;
+  border-radius: 10px;
+  float: right;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.card-button:hover {
+  background: #5ba8a2;
+}
+
+input[type='number'] {
+  margin-top: 12px;
+  padding: 3px 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 65%; /* Adjusting for padding */
+}
+
+.wallet-img {
+  width: 35px;
+  height: 35px;
+  margin-top: 1px;
+}
+
+.wallet-address {
+  color: white;
+  font-weight: 500;
+  font-size: 0.9em;
+  margin-top: 2px;
+
+}

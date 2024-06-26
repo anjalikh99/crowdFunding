@@ -1,0 +1,80 @@
+.carddetaile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 100%;
+    min-height: 100%;
+    padding: 30px;
+}
+
+.dcard-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-bottom: 5px solid #6e8efb;
+}
+
+.dcard-content {
+    width: 100%;
+    padding: 30px;
+    text-align: center;
+}
+
+.dcard-title {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.dcard-description {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.dcard-meta, .dcard-fund-raised, .dcard-fund-required {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.dcard-fund-raised, .dcard-fund-required {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.dcard-fund-raised {
+    color: #28a745;
+}
+
+.dcard-fund-required {
+    color: #dc3545;
+}
+
+.dcard-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 15px 30px;
+    font-size: 18px;
+    color: #fff;
+    background: #28a745;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-decoration: none;
+}
+
+.dcard-button:hover {
+    background: #218838;
+}
+
+.dcard-button i {
+    margin-right: 10px;
+}

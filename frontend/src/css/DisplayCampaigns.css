@@ -1,5 +1,15 @@
 .campaigns {
-   font-size: larger;
+   height: 200vh;
+   padding-top: 1%;
+   text-align: center;
+}
+
+.details {
+   display: flex;
+}
+
+.nothing {
    color: white;
-   margin-left: 30%;
+   margin-top: 20px;
+   font-size: larger;
 }

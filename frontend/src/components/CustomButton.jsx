@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
+import '../css/CustomButton.css';
 
-const CustomButton = ({ btnType, title, handleClick, styles }) => {
+const CustomButton = (props) => {
   return (
-    <button
-      type={btnType}
-      className={`font-epilogue font-semibold text-[16px] leading-[26px] text-white min-h-[52px] px-4 rounded-[10px] ${styles}`}
-      // onClick={handleClick}
+    <button className='createOrConnect'
+      type={props.btnType}
+      onClick = {props.onClick}
     >
-      {title}
+      {props.title}
     </button>
   )
 }

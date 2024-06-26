@@ -1,0 +1,66 @@
+/* src/components/ProjectForm.css */
+html {
+  background-color: #202325;
+}
+.addHeader {
+   font-size: 2em;
+   color: white;
+   font-weight: bold;
+   text-align: center;
+   margin-top: 0%;
+}
+.project-form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 10px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.4);
+  background-color: #343a40;
+}
+
+.project-form div {
+  margin-bottom: 10px;
+}
+
+.project-form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: white;
+}
+
+.project-form input,
+.project-form textarea {
+  padding: 12px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+.project-form textarea {
+  resize: vertical;
+}
+
+.project-form button {
+  padding: 15px 20px;
+  background: #76c7c0;
+  color: white;
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 2%;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 1em;
+}
+
+.project-form button:hover {
+  background: #5ba8a2;
+}
+
+

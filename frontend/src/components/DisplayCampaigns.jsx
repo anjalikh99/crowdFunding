@@ -1,43 +1,43 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-// import { v4 as uuidv4 } from "uuid";
-import FundCard from './FundCard';
-import { loader } from '../assets';
+import { useEffect , useState} from 'react';
 import '../css/DisplayCampaigns.css';
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
+import CrowdfundingCard from './CrowdfundingCard';
+import { getAllCampaigns } from '../contractMethods';
+import CampaignDetails from './CampaignDetails';
 
-const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
-  // const navigate = useNavigate();
+const DisplayCampaigns = () => {
+  const [campaignDetails, setCampaignDetails] = useState([]);
+  useEffect(() => {
+    async function fetchCampaigns() {
+    const campaign = await getAllCampaigns();
+    setCampaignDetails(campaign);
+    console.log(campaign);
+    }
+    fetchCampaigns();
+  }, []);
 
-  // const handleNavigate = (campaign) => {
-  //   navigate(`/campaign-details/${campaign.title}`, { state: campaign })
-  // }
-  
   return (
-    <div>
+    <div className='campaigns'>
       <Sidebar></Sidebar>
       <Navbar></Navbar>
-      <h1 className='campaigns'>Display Campaigns</h1>
-      {/* <h1 className="font-epilogue font-semibold text-[18px] text-white text-left">{title} ({campaigns.length})</h1>
-
-      <div className="flex flex-wrap mt-[20px] gap-[26px]">
-        {isLoading && (
-          <img src={loader} alt="loader" className="w-[100px] h-[100px] object-contain" />
-        )}
-
-        {!isLoading && campaigns.length === 0 && (
-          <p className="font-epilogue font-semibold text-[14px] leading-[30px] text-[#818183]">
-            You have not created any campigns yet
-          </p>
-        )}
-
-        {!isLoading && campaigns.length > 0 && campaigns.map((campaign) => <FundCard 
-          key={uuidv4()}
-          {...campaign}
-          handleClick={() => handleNavigate(campaign)}
-        />)}
-      </div> */}
+    <div className='details'>
+      {campaignDetails.length > 0 && campaignDetails.map((campaign, index) => 
+      <CrowdfundingCard 
+      id={index}
+      address={campaign.owner} 
+      title={campaign.title} 
+      description={campaign.description}
+      target={campaign.target}
+      category={campaign.category}
+      imgUrl={campaign.image}
+      raised={campaign.amountCollected}
+      deadline={campaign.deadline}
+       />)}
+      {campaignDetails.length == 0 && <h1 className='nothing'>No Campaigns to Display</h1>}
+    </div>
+    <CampaignDetails/>
     </div>
   )
 }
