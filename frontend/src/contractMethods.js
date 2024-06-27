@@ -1,6 +1,14 @@
 import {ethers} from 'ethers';
 import {abi} from './abi';
 
+async function initiateContract() {
+    let provider = new ethers.BrowserProvider(window.ethereum);
+    let signer = await provider.getSigner();
+    const contract = new ethers.Contract('0xE09b657A4756DE81d4933300230E6742c43Ad58c', abi, signer);
+    return contract;
+ }
+
+ 
 export async function connect() {
     let res = await connectToMetamask();
     if (res === true) {
@@ -25,13 +33,6 @@ export async function connect() {
       return false;
     }
   }
-
- async function initiateContract() {
-    let provider = new ethers.BrowserProvider(window.ethereum);
-    let signer = await provider.getSigner();
-    const contract = new ethers.Contract('0x2e009722D239E40C677d657796F8617212023987', abi, signer);
-    return contract;
- }
 
 async function changeNetwork() {
     // switch network to avalanche
@@ -75,15 +76,15 @@ async function changeNetwork() {
 
   export async function createNewCampaign(title, description, goal, imageUrl, category, endDate) {
      const contract = await initiateContract();
+     let campaignId;
      let provider = new ethers.BrowserProvider(window.ethereum);
      let signer = await provider.getSigner();
      const address = signer.address;
      const date = Math.floor(new Date(endDate).getTime() / 1000);
-     console.log(date, address);
 
      try {
      const tx = await contract.createCampaign(address, title, description, goal, date, category, imageUrl, { gasLimit: 300000, from: `${signer.address}`});
-     const campaignId = await tx.wait();
+     campaignId = await tx.wait();
      } catch(err) {
         alert("Something went wrong while creating campaign");
      }

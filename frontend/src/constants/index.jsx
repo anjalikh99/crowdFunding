@@ -7,7 +7,7 @@ export const navlinks = [
     id: 0,
     name: 'dashboard',
     imgUrl: <RxDashboard></RxDashboard>,
-    link: '/',
+    link: '/display-campaigns',
   },
   {
     id: 1,

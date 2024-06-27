@@ -13,12 +13,17 @@ const DonatorsTable = ({ donators }) => {
           </tr>
         </thead>
         <tbody>
-          {donators.map((donator, index) => (
+          {donators.length > 0 && donators.map((donator, index) => {
+            if (index % 2 != 0) {
+               return;
+            }
+            return (
             <tr key={index}>
               <td>{donator}</td>
-              <td>{parseInt(donators[1])/10**18} ETH</td>
+              <td>{parseInt(donators[index + 1]) ? parseInt(donators[index + 1]) /10**18 : 0} ETH</td>
             </tr>
-          ))}
+          )})}
+
         </tbody>
       </table>
     </div>

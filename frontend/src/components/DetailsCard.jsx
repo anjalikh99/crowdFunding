@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ProgressBar from './ProgressBar';
 import DonatorsTable from './DonatorsTable';
 import '../css/DetailsCard.css';
 import {getCampaignDonators, donate} from '../contractMethods';
 
 const DetailsCard = ({details, index}) => {
+  const navigate = useNavigate();
   const [donationAmount, setDonationAmount] = useState('');
   const [donators, setDonators] = useState([]);
 
@@ -13,7 +15,6 @@ const DetailsCard = ({details, index}) => {
      async function getDonators() {
          let returnedData = await getCampaignDonators(index);
          setDonators(returnedData);
-         console.log(returnedData);
          donations = returnedData[1];
      }
       getDonators();
@@ -24,6 +25,7 @@ const DetailsCard = ({details, index}) => {
      let success = await donate(index, amount);
      if(success) {
        alert("Donated Successfully");
+       window.location.href = '/display-campaigns';
      }
   }
 

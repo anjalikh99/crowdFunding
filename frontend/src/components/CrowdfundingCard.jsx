@@ -5,7 +5,10 @@ import { FaRegFolder } from "react-icons/fa";
 
 const CrowdfundingCard = (props) => {
 
-  const daysLeft = new Date(parseInt(props.deadline)).getDay();
+const deadline = parseInt(props.deadline);
+const currentSeconds = new Date().getTime() / 1000;
+let daysLeft = Math.floor((deadline - currentSeconds) / (60 * 60 * 24));
+  
   
   return (
     <div className="card" onClick={props.onClick} id={`card${props.id}`}>

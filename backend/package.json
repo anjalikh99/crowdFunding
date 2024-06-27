@@ -13,6 +13,7 @@
     "hardhat": "^2.22.5"
   },
   "dependencies": {
-    "dot-env": "^0.0.1"
+    "dot-env": "^0.0.1",
+    "dotenv": "^16.4.5"
   }
 }

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 import '../css/ProjectForm.css';
 import {createNewCampaign} from '../contractMethods';
+import Sidebar from './Sidebar';
 
 const ProjectForm = () => {
   const navigate = useNavigate();
@@ -17,9 +18,10 @@ const ProjectForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const success = await createNewCampaign(title, description, goal, imageUrl, category, endDate);
-    if(success >= 0) {
+    console.log(success);
+    if(success.hash) {
       alert("Data added succesfully");
-      navigate('/');
+      window.location.href = '/display-campaigns';
     }
     setTitle('');
     setDescription('');
@@ -31,6 +33,7 @@ const ProjectForm = () => {
 
   return (
     <div>
+      <Sidebar></Sidebar>
       <h1 className='addHeader'>Create a Campaign</h1>
       <form onSubmit={handleSubmit} className="project-form">
         <div>
