@@ -1,6 +1,6 @@
 .donators {
     margin-top: 20px;
-    text-align: left;
+    text-align: center;
     width: 100%;
 }
 
@@ -27,4 +27,12 @@
 
 .donators table td {
     color: #aaa8a8;
+}
+
+.no-donators {
+    text-align: center;
+    margin-top: 10px;
+    color: #aaa8a8;
+    font-weight: bold;
+    font-size: large;
 }

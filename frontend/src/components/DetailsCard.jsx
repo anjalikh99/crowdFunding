@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import ProgressBar from './ProgressBar';
 import DonatorsTable from './DonatorsTable';
 import '../css/DetailsCard.css';
 import {getCampaignDonators, donate} from '../contractMethods';
 
 const DetailsCard = ({details, index}) => {
-  const navigate = useNavigate();
   const [donationAmount, setDonationAmount] = useState('');
   const [donators, setDonators] = useState([]);
+  const [donations, setDonations] = useState([]);
 
-  let donations = [];
   useEffect(() => {
      async function getDonators() {
          let returnedData = await getCampaignDonators(index);
-         setDonators(returnedData);
-         donations = returnedData[1];
+         setDonators(returnedData[0]);
+         setDonations(returnedData[1]);
      }
       getDonators();
   }, []);
@@ -34,6 +32,9 @@ const DetailsCard = ({details, index}) => {
   }
   
   const progress = ((parseInt(details.amountCollected)/ 10** 18) / parseInt(details.target)) * 100;
+  const deadline = parseInt(details.deadline);
+  const currentSeconds = new Date().getTime() / 1000;
+  let daysLeft = Math.floor((deadline - currentSeconds) / (60 * 60 * 24));
 
   return (
     <div className="carddetaile">
@@ -54,9 +55,12 @@ const DetailsCard = ({details, index}) => {
         </p>
         <ProgressBar progress={progress} />
         <input className="amount" type='number' id='donateAmount' placeholder='Please enter donation amount in ETH' value={donationAmount} onChange={handleChange} required/>
-        <button className="dcard-button" onClick={donateToCampaign}>
+        {daysLeft > 0 && <button className="dcard-button" onClick={donateToCampaign}>
           <i className="fas fa-donate"></i> Donate Now
-        </button>
+        </button>}
+        {daysLeft <= 0 && <button className="dcard-button" disabled = "true">
+          <i className="fas fa-donate"></i> Campaign Ended
+        </button>}
         <DonatorsTable donators={donators} donations={donations} />
       </div>
     </div>

@@ -1,6 +1,6 @@
 /* src/components/ProjectForm.css */
 html {
-  background-color: #202325;
+  background-color: #212529;
 }
 .addHeader {
    font-size: 2em;
@@ -61,6 +61,10 @@ html {
 
 .project-form button:hover {
   background: #5ba8a2;
+}
+
+.bg-dark {
+  padding: 1%;
 }
 
 

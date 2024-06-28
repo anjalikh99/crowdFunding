@@ -20,8 +20,10 @@ const MainPage = () => {
     async function connectMetamask() {
         const contract = await connect();
         // Store myContract in localStorage
-        localStorage.setItem('myContract', JSON.stringify(contract));
-        navigate('/display-campaigns');
+        if (contract) {
+          localStorage.setItem('myContract', JSON.stringify(contract));
+          navigate('/display-campaigns');
+        }
 
     }
 

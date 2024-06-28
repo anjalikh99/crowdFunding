@@ -26,7 +26,7 @@ const DisplayCampaigns = () => {
   }
 
   return (
-    <div className='campaigns'>
+    <div className='campaigns bg-dark'>
      {!openDetails && <Sidebar></Sidebar>}
      {!openDetails && <Navbar header="All Campaigns"></Navbar>}
      {!openDetails && <div className='details'>

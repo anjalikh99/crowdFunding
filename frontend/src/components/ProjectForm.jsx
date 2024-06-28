@@ -32,17 +32,17 @@ const ProjectForm = () => {
   };
 
   return (
-    <div>
+    <div className='bg-dark'>
       <Sidebar></Sidebar>
       <h1 className='addHeader'>Create a Campaign</h1>
       <form onSubmit={handleSubmit} className="project-form">
         <div>
           <label>Title</label>
-          <input name = "title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
+          <input name = "title" type="text" maxLength='40' value={title} onChange={(e) => setTitle(e.target.value)} required />
         </div>
         <div>
           <label>Description</label>
-          <textarea name = "description" value={description} onChange={(e) => setDescription(e.target.value)} required />
+          <textarea name = "description" maxLength='30' value={description} onChange={(e) => setDescription(e.target.value)} required />
         </div>
         <div>
           <label>Goal</label>

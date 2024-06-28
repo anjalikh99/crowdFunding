@@ -4,7 +4,7 @@ import {abi} from './abi';
 async function initiateContract() {
     let provider = new ethers.BrowserProvider(window.ethereum);
     let signer = await provider.getSigner();
-    const contract = new ethers.Contract('0xE09b657A4756DE81d4933300230E6742c43Ad58c', abi, signer);
+    const contract = new ethers.Contract('0x3f690A31fC13911554A37E92E9d23C93EB912c5D', abi, signer);
     return contract;
  }
 
@@ -80,11 +80,18 @@ async function changeNetwork() {
      let provider = new ethers.BrowserProvider(window.ethereum);
      let signer = await provider.getSigner();
      const address = signer.address;
+     let currentDate = Math.floor(new Date().getTime() / 1000);
      const date = Math.floor(new Date(endDate).getTime() / 1000);
+     let daysLeft = Math.floor((date - currentDate) / (60 * 60 * 24));
 
-     try {
-     const tx = await contract.createCampaign(address, title, description, goal, date, category, imageUrl, { gasLimit: 300000, from: `${signer.address}`});
-     campaignId = await tx.wait();
+     try { 
+      if (daysLeft > 0 && parseInt(goal) > 0) {
+         const tx = await contract.createCampaign(address, title, description, goal, date, category, imageUrl, { gasLimit: 300000, from: `${signer.address}`});
+         campaignId = await tx.wait();
+      }
+      else {
+        alert("Please enter correct details");
+      }
      } catch(err) {
         alert("Something went wrong while creating campaign");
      }
@@ -110,15 +117,28 @@ async function changeNetwork() {
 
   export async function donate(campaignId, amount) {
     const contract = await initiateContract();
-    console.log(amount.toString());
     let provider = new ethers.BrowserProvider(window.ethereum);
     let signer = await provider.getSigner();
     const address = signer.address;
 
     try {
-       const tx = await contract.donateToCampaign(campaignId, {gas : 300000, from : address, value : ethers.parseEther(amount.toString())});
-       await tx.wait();
-       return true;
+       const campaignDetails = await contract.campaigns(campaignId);
+       let target = parseInt(campaignDetails[3]);
+       let raised = parseInt(campaignDetails[5]) / 10 ** 18;
+       
+       if (raised + parseInt(amount) <= target) {
+          if (parseInt(amount) > 0) {
+            const tx = await contract.donateToCampaign(campaignId, {gas : 300000, from : address, value : ethers.parseEther(amount.toString())});
+            await tx.wait();
+            return true;
+          }
+          else {
+             alert("Please enter valid amount");
+          }
+       }
+       else {
+         alert ("Please enter less amount than required");
+       }
     } catch(err) {
         alert("Something went wrong while donation");
         console.log(err);

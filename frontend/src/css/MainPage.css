@@ -18,11 +18,9 @@
     color: white;
     width: 550px;
     overflow: hidden;
-    border-right: 0.1em solid white;
     white-space: nowrap;
     text-decoration: none;
     letter-spacing: 0.05em;
-    animation: typing 3.5s steps(35, end), blink-caret 0.75s step-end infinite;
   }
 
   .walletButtonContainer {

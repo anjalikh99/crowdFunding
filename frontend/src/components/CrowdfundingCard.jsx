@@ -23,7 +23,7 @@ let daysLeft = Math.floor((deadline - currentSeconds) / (60 * 60 * 24));
           <div className="progress-bar" style={{ width: `${((parseInt(props.raised) / 10 ** 18) / parseInt(props.target)) * 100}%` }}></div>
         </div>
         <span className="card-goal">Raised: {parseInt(props.raised) / 10**18} ETH / {props.target.toString()} ETH</span>
-        <span className="card-days-left">Days Left: {daysLeft}</span>
+        <span className="card-days-left">Days Left: {daysLeft >= 0 ? daysLeft : 0}</span>
         <img src={walletUrl} className='wallet-img'/>
         <span className='wallet-address'>{props.address.substr(0, 30)}...</span>
       </div>

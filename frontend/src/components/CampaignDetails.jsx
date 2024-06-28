@@ -5,7 +5,6 @@ import { Navbar, Sidebar } from "./index";
 
 const CampaignDetails = ({campaignArray, index}) => {
    let campaignId = parseInt(index.substr(index.length - 1));
-   console.log(index);
     return (
       <div className="campaign-details">
          <Sidebar/>
