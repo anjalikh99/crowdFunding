@@ -16,12 +16,7 @@ export const abi = [
       },
       {
         "internalType": "string",
-        "name": "title",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "description",
+        "name": "ipfsHash",
         "type": "string"
       },
       {
@@ -41,11 +36,6 @@ export const abi = [
       },
       {
         "internalType": "string",
-        "name": "image",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
         "name": "category",
         "type": "string"
       }
@@ -62,12 +52,7 @@ export const abi = [
       },
       {
         "internalType": "string",
-        "name": "_title",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "_description",
+        "name": "_ipfsHash",
         "type": "string"
       },
       {
@@ -83,11 +68,6 @@ export const abi = [
       {
         "internalType": "string",
         "name": "_category",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "_image",
         "type": "string"
       }
     ],
@@ -128,12 +108,7 @@ export const abi = [
           },
           {
             "internalType": "string",
-            "name": "title",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "description",
+            "name": "ipfsHash",
             "type": "string"
           },
           {
@@ -150,11 +125,6 @@ export const abi = [
             "internalType": "uint256",
             "name": "amountCollected",
             "type": "uint256"
-          },
-          {
-            "internalType": "string",
-            "name": "image",
-            "type": "string"
           },
           {
             "internalType": "string",

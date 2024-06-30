@@ -1,5 +1,10 @@
 .header {
     color: white;
+    margin-top: 0;
     margin-left: 10%;
     font-size: 1.5em;
+}
+
+.navbar {
+    padding: 0%;
 }

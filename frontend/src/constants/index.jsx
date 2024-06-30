@@ -28,3 +28,5 @@ export const navlinks = [
     link: '/',
   },
 ];
+
+export let restCampaignDetails = [];

@@ -4,7 +4,7 @@ import DonatorsTable from './DonatorsTable';
 import '../css/DetailsCard.css';
 import {getCampaignDonators, donate} from '../contractMethods';
 
-const DetailsCard = ({details, index}) => {
+const DetailsCard = ({details, restDetails, index}) => {
   const [donationAmount, setDonationAmount] = useState('');
   const [donators, setDonators] = useState([]);
   const [donations, setDonations] = useState([]);
@@ -38,11 +38,11 @@ const DetailsCard = ({details, index}) => {
 
   return (
     <div className="carddetaile">
-      <img src={details.image} alt="Card Image" className="dcard-image" />
+      <img src={restDetails.image} alt="Card Image" className="dcard-image" />
       <div className="dcard-content">
-        <h2 className="dcard-title">{details.title}</h2>
+        <h2 className="dcard-title">{restDetails.title}</h2>
         <p className="dcard-description">
-          {details.description}
+          {restDetails.description}
         </p>
         <p className="dcard-meta">
           <i className="fas fa-info-circle"></i> {details.category}
